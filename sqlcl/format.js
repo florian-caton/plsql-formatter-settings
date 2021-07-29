@@ -46,14 +46,14 @@ var getFiles = function (rootPath, extensions) {
 }
 
 var configure = function (formatter, xmlPath, arboriPath) {
-    if (!"default".equals(xmlPath) && !"embedded".equals(xmlPath) && xmlPath != null) {
+    if ("default" != xmlPath && "embedded" != xmlPath && xmlPath != null) {
         var url = new javaFile(xmlPath).toURI().toURL();
         var options = javaPersist2XML.read(url);
         var keySet = options.keySet().stream().collect(javaCollectors.toList());
         for (var j in keySet) {
             formatter.options.put(keySet[j], options.get(keySet[j]));
         }
-    } else if ("embedded".equals(xmlPath)) {
+    } else if ("embedded" == xmlPath) {
         // Code Editor: Format
         formatter.options.put(formatter.adjustCaseOnly, false);                                             // default: false (set true to skip formatting)
         // Advanced Format: General
@@ -92,7 +92,7 @@ var configure = function (formatter, xmlPath, arboriPath) {
         formatter.options.put(formatter.formatThreshold, 1);                                                // default: 1 (disables deprecated post-processing logic)
     }
     var arboriFileName = arboriPath;
-    if (!"default".equals(arboriPath)) {
+    if ("default" != arboriPath) {
         arboriFileName = new javaFile(arboriPath).getAbsolutePath();
     }
     formatter.options.put(formatter.formatProgramURL, arboriFileName);                                      // default: "default" (= provided by SQLDev / SQLcl)
@@ -316,7 +316,7 @@ var processAndValidateArgs = function (args) {
         }
         if (args[i].toLowerCase().startsWith("xml=")) {
             xmlPath = args[i].substring(4);
-            if (!"default".equals(xmlPath) && !"embedded".equals(xmlPath)) {
+            if ("default" != xmlPath && "embedded" != xmlPath) {
                 xmlPath = getCdPath(xmlPath);
                 if (!existsFile(xmlPath)) {
                     ctx.write("file " + xmlPath + " does not exist.\n\n");
@@ -327,7 +327,7 @@ var processAndValidateArgs = function (args) {
         }
         if (args[i].toLowerCase().startsWith("arbori=")) {
             arboriPath = args[i].substring(7);
-            if (!"default".equals(arboriPath)) {
+            if ("default" != arboriPath) {
                 arboriPath = getCdPath(arboriPath);
                 if (!existsFile(getCdPath(arboriPath))) {
                     ctx.write("file " + arboriPath + " does not exist.\n\n");
@@ -476,7 +476,7 @@ var unregisterTvdFormat = function () {
         .stream().map(function(l) l.getClass()).collect(javaCollectors.toSet());
     // re-register all commands except for class TvdFormat and remaining (not removed) listener classes
     for (var i in listeners) {
-        if (!listeners.get(i).toString().equals("TvdFormat") && !remainingListeners.contains(listeners.get(i).getClass())) {
+        if (!listeners.get(i).toString() == "TvdFormat" && !remainingListeners.contains(listeners.get(i).getClass())) {
             javaCommandRegistry.addForAllStmtsListener(listeners.get(i).getClass());
         }
     }
