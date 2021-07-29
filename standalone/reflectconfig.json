@@ -1,0 +1,84 @@
+[
+  {
+    "name" : "com.trivadis.plsql.formatter.ScriptRunnerContext",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "java.lang.String",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "java.util.Arrays",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "java.nio.file.Paths",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "java.io.File",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "java.nio.file.Files",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "java.util.stream.Collectors",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "oracle.dbtools.app.Persist2XML",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "java.util.regex.Pattern",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "oracle.dbtools.app.Format",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "oracle.dbtools.parser.Lexer",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "oracle.dbtools.parser.Parsed",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "oracle.dbtools.parser.plsql.SqlEarley",
+    "allDeclaredConstructors" : true,
+    "allDeclaredMethods" : true,
+    "allDeclaredClasses" : true
+  },
+  {
+    "name" : "java.lang.System",
+    "allPublicMethods" : true
+  }
+]
