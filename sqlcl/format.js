@@ -37,7 +37,7 @@ var getFiles = function (rootPath, extensions) {
     } else {
         files = javaFiles.walk(javaPaths.get(rootPath))
             .filter(function (f) javaFiles.isRegularFile(f)
-                && javaArrays.stream(Java.to(extensions, "java.lang.String[]")).anyMatch(function (e) f.toString().toLowerCase().endsWith(e))
+                && javaArrays.stream(Java.to(extensions, "java.lang.String[]")).anyMatch(function (e) endsWith(f.toString().toLowerCase(), e))
             )
             .sorted()
             .collect(javaCollectors.toList());
@@ -180,11 +180,11 @@ var getCdPath = function (path) {
     } else if (path.length > 1 && path.substring(1, 2) == ":") {
         return path; // Windows, fully qualified, e.g. C:\mydir
     }
-    var currentDir = ctx.getProperty("script.runner.cd_command");
+    var currentDir = String(ctx.getProperty("script.runner.cd_command")).valueOf();
     if (currentDir == null) {
         return path;
     } else {
-        if (path.endsWith(javaFile.separator)) {
+        if (endsWith(path, String(javaFile.separator).valueOf())) {
             return currentdir + path;
         } else {
             return currentDir + javaFile.separator + path;
@@ -226,7 +226,7 @@ var processAndValidateArgs = function (args) {
 
     // If the rootPath ends with '.json', then the file is assumed to be a 
     // <config.json> instead. 
-    if (rootPath.endsWith('.json')) {
+    if (endsWith(rootPath, '.json')) {
         var configJson = readFile(javaPaths.get(rootPath));
         try {
             configJson = JSON.parse(configJson);
@@ -382,9 +382,13 @@ var formatBuffer = function (formatter) {
     ctx.getOutputStream().flush();
 }
 
+var endsWith = function(input, end) {
+    return input.lastIndexOf(end) == input.length - end.length;
+}
+
 var isMarkdownFile = function (file, markdownExtensions) {
     for (var j in markdownExtensions) {
-        if (file.toString().toLowerCase().endsWith(markdownExtensions[j])) {
+        if (endsWith(file.toString().toLowerCase(), markdownExtensions[j])) {
             return true;
         }
     }
@@ -392,7 +396,7 @@ var isMarkdownFile = function (file, markdownExtensions) {
 }
 
 var formatMarkdownFile = function (file, formatter) {
-    var original = readFile(file)
+    var original = String(readFile(file)).valueOf();
     var p = javaPattern.compile("(```\\s*sql\\s*\\n)(.+?)(\\n```)", javaPattern.DOTALL);
     var m = p.matcher(original);
     var result = "";
