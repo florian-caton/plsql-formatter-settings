@@ -175,7 +175,7 @@ var getJsPath = function () {
 }
 
 var getCdPath = function (path) {
-    if (path.startsWith("/")) {
+    if (path.indexOf("/") == 0) {
         return path; // Unix, fully qualified
     } else if (path.length > 1 && path.substring(1, 2) == ":") {
         return path; // Windows, fully qualified, e.g. C:\mydir
@@ -294,7 +294,7 @@ var processAndValidateArgs = function (args) {
     }
 
     for (var i = 2; i < args.length; i++) {
-        if (args[i].toLowerCase().startsWith("ext=")) {
+        if (args[i].toLowerCase().indexOf("ext=") == 0) {
             extArgFound = true;
             if (args[i].length > 4) {
                 var values = args[i].substring(4).split(",");
@@ -304,7 +304,7 @@ var processAndValidateArgs = function (args) {
             }
             continue;
         }
-        if (args[i].toLowerCase().startsWith("mext=")) {
+        if (args[i].toLowerCase().indexOf("mext=") == 0) {
             mextArgFound = true;
             if (args[i].length > 5) {
                 var values = args[i].substring(5).split(",");
@@ -314,7 +314,7 @@ var processAndValidateArgs = function (args) {
             }
             continue;
         }
-        if (args[i].toLowerCase().startsWith("xml=")) {
+        if (args[i].toLowerCase().indexOf("xml=") == 0) {
             xmlPath = args[i].substring(4);
             if ("default" != xmlPath && "embedded" != xmlPath) {
                 xmlPath = getCdPath(xmlPath);
@@ -325,7 +325,7 @@ var processAndValidateArgs = function (args) {
             }
             continue;
         }
-        if (args[i].toLowerCase().startsWith("arbori=")) {
+        if (args[i].toLowerCase().indexOf("arbori=") == 0) {
             arboriPath = args[i].substring(7);
             if ("default" != arboriPath) {
                 arboriPath = getCdPath(arboriPath);
