@@ -137,20 +137,9 @@
                 <configuration>
                     <skip>${skip.native}</skip>
                     <imageName>tvdformat</imageName>
-                    <!-- "-language:js -no-fallback" leads to a runtime error:
-                        Exception in thread "main" javax.script.ScriptException: org.graalvm.polyglot.PolyglotException: TypeError: Access to host class java.lang.String is not allowed or does not exist.
-                            at com.oracle.truffle.js.scriptengine.GraalJSScriptEngine.toScriptException(GraalJSScriptEngine.java:483)
-                            at com.oracle.truffle.js.scriptengine.GraalJSScriptEngine.eval(GraalJSScriptEngine.java:460)
-                            at com.oracle.truffle.js.scriptengine.GraalJSScriptEngine.eval(GraalJSScriptEngine.java:400)
-                            at com.trivadis.plsql.formatter.TvdFormat.run(TvdFormat.java:40)
-                            at com.trivadis.plsql.formatter.TvdFormat.main(TvdFormat.java:46)
-                        Caused by: org.graalvm.polyglot.PolyglotException: TypeError: Access to host class java.lang.String is not allowed or does not exist.
-                            at <js>.:program(<eval>:19)
-                            at org.graalvm.polyglot.Context.eval(Context.java:375)
-                            at com.oracle.truffle.js.scriptengine.GraalJSScriptEngine.eval(GraalJSScriptEngine.java:458)
-	                -->
+                    <!-- Native image not working yet. See https://github.com/oracle/graal/issues/3624 -->
                     <buildArgs>
-                        -H:IncludeResources=.* --force-fallback
+                        -H:IncludeResources=.* -H:ReflectionConfigurationFiles=${project.basedir}/reflectconfig.json --language:js --no-fallback
                     </buildArgs>
                 </configuration>
             </plugin>
