@@ -143,6 +143,17 @@
     "allPublicClasses": true
   },
   {
+    "name" : "java.io.PrintStream",
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true,
+    "allDeclaredFields": true,
+    "allDeclaredClasses": true,
+    "allPublicConstructors": true,
+    "allPublicMethods": true,
+    "allPublicFields": true,
+    "allPublicClasses": true
+  },
+  {
     "name" : "oracle.dbtools.app.Persist2XML",
     "allDeclaredConstructors": true,
     "allDeclaredMethods": true,
