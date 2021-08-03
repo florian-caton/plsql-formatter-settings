@@ -139,7 +139,7 @@
                     <imageName>tvdformat</imageName>
                     <!-- Native image not working yet. See https://github.com/oracle/graal/issues/3624 -->
                     <buildArgs>
-                        -H:IncludeResources=.* -H:ReflectionConfigurationFiles=${project.basedir}/reflectconfig.json --language:js --no-fallback
+                        -H:IncludeResources=.* -H:ReflectionConfigurationFiles=${project.basedir}/reflect-config.json -H:DynamicProxyConfigurationFiles=${project.basedir}/proxy-config.json --language:js --no-fallback
                     </buildArgs>
                 </configuration>
             </plugin>
